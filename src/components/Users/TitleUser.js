@@ -1,4 +1,15 @@
+import { useEffect, useState } from 'react';
+import { getData } from '../../utils/getData';
 function TitleUser() {
+  const [datas, setDatas] = useState([]);
+  useEffect(() => {
+    async function infoLoad() {
+      const datas = await getData();
+      setDatas(datas);
+    }
+    infoLoad();
+  }, []);
+  console.log(datas);
   return (
     <div className="headerUser">
       <h1>

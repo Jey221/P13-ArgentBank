@@ -1,12 +1,12 @@
 import Footer from '../components/Footer';
-import FormSign from '../components/SignIn/FormSign';
+import Login from '../components/SignIn/Login';
 import Header from '../components/Header';
 
 function SignIn() {
   return (
     <div className="body">
       <Header />
-      <FormSign />
+      <Login />
       <Footer />
     </div>
   );
