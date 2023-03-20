@@ -1,14 +1,30 @@
+import axios from 'axios';
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
-  const [email, setEmail] = useState('');
-  const [pass, setPass] = useState('');
+  let navigate = useNavigate();
+  const [inputs, setInputs] = useState({
+    email: 'tony@stark.com',
+    password: 'password123',
+  });
+
+  const onChange = (e) => {
+    setInputs({ ...inputs, [e.target.name]: e.target.value });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('email', email);
-    console.log('pass', pass);
+    console.log(inputs);
+    axios
+      .post('http://localhost:3001/api/v1/user/login', inputs)
+      .then((res) => {
+        console.log(res);
+        navigate('/Users');
+      })
+      .catch((error) => console.log(error));
   };
+
   return (
     <main className="main bg-dark">
       <section className="sign-in-content">
@@ -18,23 +34,23 @@ function Login() {
           <div className="input-wrapper">
             <label htmlFor="email">email</label>
             <input
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={inputs.email}
+              onChange={onChange}
               type="email"
-              id="email"
               placeholder="youremail@mail.com"
               name="email"
+              required
             />
           </div>
           <div className="input-wrapper">
             <label htmlFor="password">Password</label>
             <input
-              value={pass}
-              onChange={(e) => setPass(e.target.value)}
+              value={inputs.password}
+              onChange={onChange}
               type="password"
-              id="password"
               name="password"
               placeholder="**************"
+              required
             />
           </div>
           <div className="input-remember">
