@@ -6,6 +6,7 @@ function TitleUser() {
     async function infoLoad() {
       const datas = await getData();
       setDatas(datas);
+      console.log(datas);
     }
     infoLoad();
   }, []);

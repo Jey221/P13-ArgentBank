@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { accountService } from '../../utils/accountService';
 
 function Login() {
   let navigate = useNavigate();
@@ -15,14 +16,16 @@ function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(inputs);
+    console.log('inputs', inputs);
     axios
       .post('http://localhost:3001/api/v1/user/login', inputs)
       .then((res) => {
-        console.log(res);
+        console.log('res', res);
+        console.log('token', res.data.body.token);
+        accountService.saveToken(res.data.body.token);
         navigate('/Users');
       })
-      .catch((error) => console.log(error));
+      .catch((error) => console.log('error', error));
   };
 
   return (
