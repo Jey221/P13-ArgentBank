@@ -58,7 +58,16 @@ body {
   text-decoration: none;
   margin-right: 0.5rem;
 }
-
+.button-logout {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  font-weight: bold;
+}
 .main-nav-item:hover {
   text-decoration: underline;
 }

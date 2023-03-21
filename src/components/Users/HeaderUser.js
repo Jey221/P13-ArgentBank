@@ -1,7 +1,14 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import logo from '../../assets/argentBankLogo.png';
+import { accountService } from '../../utils/accountService';
 
 function HeaderUser() {
+  let navigate = useNavigate();
+
+  const logout = () => {
+    accountService.logout();
+    navigate('/');
+  };
   return (
     <nav className="main-nav">
       <Link className="main-nav-logo" to={'/'}>
@@ -16,10 +23,10 @@ function HeaderUser() {
         <Link className="main-nav-item" to={''}>
           <i className="fa fa-user-circle"></i> Tony
         </Link>
-        <Link className="main-nav-item" to={'/'}>
+        <button className="button-logout" onClick={logout}>
           <i className="fa fa-sign-out"></i>
           Sign Out
-        </Link>
+        </button>
       </div>
     </nav>
   );

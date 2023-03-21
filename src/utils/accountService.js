@@ -1,3 +1,9 @@
+import Axios from './getData';
+
+let login = (inputs) => {
+  return Axios.post('/api/v1/user/login', inputs);
+};
+
 let saveToken = (token) => {
   localStorage.setItem('token', token);
 };
@@ -13,6 +19,7 @@ let isLogged = () => {
 
 export const accountService = {
   saveToken,
+  login,
   logout,
   isLogged,
 };
