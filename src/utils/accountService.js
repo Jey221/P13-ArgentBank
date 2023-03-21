@@ -1,4 +1,4 @@
-import Axios from './getData';
+import Axios from './AxiosParam';
 
 let login = (inputs) => {
   return Axios.post('/api/v1/user/login', inputs);
@@ -17,9 +17,13 @@ let isLogged = () => {
   return !!token;
 };
 
+let getToken = () => {
+  return localStorage.getItem('token');
+};
 export const accountService = {
   saveToken,
   login,
   logout,
   isLogged,
+  getToken,
 };

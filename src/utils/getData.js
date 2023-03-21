@@ -1,7 +1,9 @@
-import axios from 'axios';
+import Axios from './AxiosParam.js';
 
-const Axios = axios.create({
-  baseURL: 'http://localhost:3001',
-});
+let getUsers = () => {
+  return Axios.put('/api/v1/user/profile');
+};
 
-export default Axios;
+export const userService = {
+  getUsers,
+};
