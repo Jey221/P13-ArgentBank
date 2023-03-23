@@ -21,23 +21,25 @@ const EditZone = () => {
   const onChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const updateUser = { ...user, [e.target.name]: e.target.value };
     userService
       .editUsers(updateUser)
       .then((res) => {
-        console.log('res', res);
         navigate('/Users');
       })
       .catch((err) => console.log('err', err));
   };
-
+  const handleReset = (e) => {
+    e.preventDefault();
+    console.log('reset');
+    navigate('/Users');
+  };
   return (
     <div>
       <h2>Welcome back</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} onReset={handleReset}>
         <div className="editInput">
           <input
             value={user.firstName}

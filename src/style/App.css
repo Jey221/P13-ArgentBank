@@ -115,6 +115,35 @@ body {
   font-size: 0.9rem;
 }
 
+.editInput {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1%;
+  margin: 1%;
+  color: grey;
+}
+.editInput input {
+  width: 15%;
+  padding: 8px;
+  font-size: 1rem;
+  color: grey;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+}
+.editButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1%;
+  margin: 1%;
+  margin-bottom: 3%;
+}
+.editButton button {
+  width: 13%;
+  padding: 0.3%;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+}
+
 @media (min-width: 920px) {
   .hero {
     height: 400px;
