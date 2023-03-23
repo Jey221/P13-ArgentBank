@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import Users from './pages/Users';
 import AuthGuard from './utils/AuthGuard';
 import AuthRouter from './utils/AuthRouter';
+import EditUser from './pages/EditUser';
 
 function App() {
   return (
@@ -18,6 +19,14 @@ function App() {
             </AuthGuard>
           }
         />
+        <Route
+          path="/Users/edit-mode"
+          element={
+            <AuthGuard>
+              <EditUser />
+            </AuthGuard>
+          }
+        />
         <Route path="/SignIn" element={<AuthRouter />} />
       </Routes>
     </div>
@@ -25,3 +34,5 @@ function App() {
 }
 
 export default App;
+
+/*  */

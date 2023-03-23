@@ -1,7 +1,13 @@
 import { useEffect, useState } from 'react';
 import { userService } from '../../utils/getData';
+import { useNavigate } from 'react-router-dom';
 
 function TitleUser() {
+  let navigate = useNavigate();
+  const editUsers = () => {
+    navigate('/Users/edit-mode');
+  };
+
   const [firstName, setFirstName] = useState();
   useEffect(() => {
     userService
@@ -20,14 +26,22 @@ function TitleUser() {
         <br />
         {firstName}
       </h1>
-      <button className="edit-button">Edit Name</button>
+      <button className="edit-button" onClick={editUsers}>
+        Edit Name
+      </button>
     </div>
   );
 }
 
 export default TitleUser;
 
-/*     const [firstName, setFirstName] = useState();
+/*     
+  let navigate = useNavigate();
+  const edit
+
+
+
+const [firstName, setFirstName] = useState();
   const [lastName, setLastName] = useState();
 
   useEffect(() => {

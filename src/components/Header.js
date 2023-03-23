@@ -4,7 +4,7 @@ import logo from '../assets/argentBankLogo.png';
 import { accountService } from '../utils/accountService';
 import { userService } from '../utils/getData';
 
-console.log(accountService.isLogged());
+// console.log(accountService.isLogged());
 
 function Header() {
   let navigate = useNavigate();
@@ -13,7 +13,6 @@ function Header() {
     userService
       .getUsers()
       .then((res) => {
-        console.log('res.data', res.data);
         setFirstName(res.data.body.firstName);
       })
       .catch((err) => console.log('err', err));

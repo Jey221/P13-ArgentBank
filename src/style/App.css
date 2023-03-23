@@ -23,6 +23,9 @@ body {
 .bg-dark {
   background-color: #12002b;
 }
+.bg-light {
+  background-color: #e0e6ed;
+}
 
 .sr-only {
   border: 0 !important;
