@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { userService } from '../../utils/getData';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
 function TitleUser() {
   let navigate = useNavigate();
@@ -8,16 +9,26 @@ function TitleUser() {
     navigate('/Users/edit-mode');
   };
 
+  const name = useSelector((state) => state.User);
+
   const [firstName, setFirstName] = useState();
+
+  const dispatch = useDispatch();
+
   useEffect(() => {
     userService
       .getUsers()
       .then((res) => {
-        console.log('res.data', res.data);
         setFirstName(res.data.body.firstName);
+        dispatch({
+          type: 'User/userUpdate',
+          payload: res.data.body.firstName,
+        });
       })
       .catch((err) => console.log('err', err));
   }, []);
+  console.log(name.firstName);
+  console.log(name);
   console.log(firstName);
   return (
     <div className="headerUser">
@@ -34,22 +45,3 @@ function TitleUser() {
 }
 
 export default TitleUser;
-
-/*     
-  let navigate = useNavigate();
-  const edit
-
-
-
-const [firstName, setFirstName] = useState();
-  const [lastName, setLastName] = useState();
-
-  useEffect(() => {
-    setFirstName(localStorage.getItem('firstName'));
-    setLastName(localStorage.getItem('lastName'));
-  }, []);
-  console.log('firstName', firstName);
-  console.log('lastName', lastName);
-
-
- */

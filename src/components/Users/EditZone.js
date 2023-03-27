@@ -33,7 +33,6 @@ const EditZone = () => {
   };
   const handleReset = (e) => {
     e.preventDefault();
-    console.log('reset');
     navigate('/Users');
   };
   return (
