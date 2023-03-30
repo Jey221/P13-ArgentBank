@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 // import { getPosts } from '../../redux/redux copy';
-import { fetchUsers } from '../../redux/redux';
+//import { fetchUsers } from '../../redux/redux';
 //import { loadUser } from '../../redux/redux copy 3';
 
 function TitleUser() {
@@ -21,10 +21,12 @@ function TitleUser() {
     useEffect(() => {
     dispatch(loadUser());
   }, [dispatch]);   
-*/
-  useEffect(() => {
+
+    useEffect(() => {
     dispatch(fetchUsers());
   }, [dispatch]);
+
+*/
 
   console.log('email', email);
   console.log('password', password);
