@@ -15,6 +15,7 @@ let isLogged = () => {
 
 let saveToken = (token) => {
   localStorage.setItem('token', token);
+  // sessionStorage.setItem('token', token);
 };
 
 let getToken = () => {
