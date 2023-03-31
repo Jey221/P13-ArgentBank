@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { accountService } from '../../utils/accountService';
+import { useSelector, useDispatch } from 'react-redux';
+import { login, logout } from '../../redux/redux';
 
 function Login() {
   let navigate = useNavigate();
@@ -9,6 +11,8 @@ function Login() {
     password: '',
   });
 
+  const user = useSelector((state) => state.user);
+  console.log(user);
   const onChange = (e) => {
     setInputs({ ...inputs, [e.target.name]: e.target.value });
   };
