@@ -1,18 +1,23 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { accountService } from '../../utils/accountService';
 import { useSelector, useDispatch } from 'react-redux';
-import { login, logout } from '../../redux/redux';
+import { fetchUser } from '../../redux/userSlice';
 
 function Login() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchUser());
+  }, []);
+
+  const user = useSelector((state) => state.user);
+  console.log(user);
   let navigate = useNavigate();
   const [inputs, setInputs] = useState({
     email: '',
     password: '',
   });
 
-  const user = useSelector((state) => state.user);
-  console.log(user);
   const onChange = (e) => {
     setInputs({ ...inputs, [e.target.name]: e.target.value });
   };
