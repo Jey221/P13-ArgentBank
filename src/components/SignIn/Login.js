@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 // import { useNavigate } from 'react-router-dom';
 // import { accountService } from '../../utils/accountService';
 import { getLogin } from '../../redux/actions/loginAction';
@@ -15,7 +15,9 @@ function Login() {
   const onChange = (e) => {
     setInputs({ ...inputs, [e.target.name]: e.target.value });
   };
+  const tok = useSelector((state) => state.loginReducer[1]);
 
+  console.log('tok', tok);
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log('get login');
