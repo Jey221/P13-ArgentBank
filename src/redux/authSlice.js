@@ -10,17 +10,6 @@ const initialState = {
   lastName: '',
 };
 
-/* 
-const initialState = {
-  email: '',
-  password: '',
-  firstName: '',
-  lastName: '',
-  token: '',
-  isLogged: false,
-};
- */
-
 export const loginUser = createAsyncThunk('loginuser', async (body) => {
   const res = await fetch('http://localhost:3001/api/v1/user/login', {
     method: 'post',
