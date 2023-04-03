@@ -18,7 +18,6 @@ function TitleUser() {
       })
       .catch((err) => console.log('err', err));
   }, []);
-  console.log(firstName);
   return (
     <div className="headerUser">
       <h1>

@@ -4,8 +4,6 @@ import logo from '../assets/argentBankLogo.png';
 import { accountService } from '../utils/accountService';
 import { userService } from '../utils/getData';
 
-// console.log(accountService.isLogged());
-
 function Header() {
   let navigate = useNavigate();
   const [firstName, setFirstName] = useState();
