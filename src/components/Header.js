@@ -1,22 +1,15 @@
 //import { useEffect, useState } from 'react';
 /* import { accountService } from '../utils/accountService';
 import { userService } from '../utils/getData';
- */
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import logo from '../assets/argentBankLogo.png';
+ */
 
 // console.log(accountService.isLogged());
 
 function Header() {
-  const loc = useSelector((state) => state.user.isLogged);
-  // const [firstName, setFirstName] = useState();
-  const dispatch = useDispatch;
-  // let navigate = useNavigate();
-  const info = useSelector((state) => state.user.firstName);
-  console.log('info', info);
-  console.log('loc', loc);
-  const logout = () => {
+  /*   const logout = () => {
     console.log('out');
   };
   if (loc === true) {
@@ -60,6 +53,7 @@ function Header() {
       </nav>
     );
   }
+ */
 }
 
 export default Header;

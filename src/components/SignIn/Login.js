@@ -1,22 +1,15 @@
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+/* import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { loginUser } from '../../redux/authSlice';
-
+ */
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  let navigate = useNavigate();
-
-  const dispatch = useDispatch();
-
-  const loc = useSelector((state) => state.user.isLogged);
-  console.log(loc);
+  // let navigate = useNavigate();
 
   const handleLogin = () => {
     console.log(email, password);
-    dispatch(loginUser({ email, password }));
-    navigate('/Users');
   };
 
   return (
