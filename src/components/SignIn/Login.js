@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { accountService } from '../../utils/accountService';
+import { useDispatch } from 'react-redux';
+// import { useNavigate } from 'react-router-dom';
+// import { accountService } from '../../utils/accountService';
+import { getLogin } from '../../redux/actions/loginAction';
 
 function Login() {
-  let navigate = useNavigate();
+  // let navigate = useNavigate();
+  const dispatch = useDispatch();
   const [inputs, setInputs] = useState({
     email: '',
     password: '',
@@ -13,15 +16,11 @@ function Login() {
     setInputs({ ...inputs, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    accountService
-      .login(inputs)
-      .then((res) => {
-        accountService.saveToken(res.data.body.token);
-        navigate('/Users');
-      })
-      .catch((error) => console.log('error', error));
+    console.log('get login');
+    console.log(inputs);
+    dispatch(getLogin(inputs));
   };
 
   return (

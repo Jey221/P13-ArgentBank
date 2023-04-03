@@ -2,12 +2,13 @@ import axios from 'axios';
 
 export const GET_LOGIN = 'GET_LOGIN';
 
-export const getLogin = (input) => {
+export const getLogin = (data) => {
   return (dispatch) => {
     return axios
-      .post('http://localhost:3001/api/v1/user/login', input)
+      .post('http://localhost:3001/api/v1/user/login', data)
       .then((res) => {
-        console.log(res);
+        dispatch({ type: GET_LOGIN, payload: data });
+        localStorage.setItem('token', res.data.body.token);
       });
   };
 };
