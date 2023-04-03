@@ -1,4 +1,4 @@
-import Axios from './AxiosParam';
+/* import Axios from './AxiosParam';
 
 let login = (inputs) => {
   return Axios.post('/api/v1/user/login', inputs);
@@ -28,3 +28,4 @@ export const accountService = {
   saveToken,
   getToken,
 };
+ */

@@ -1,27 +1,25 @@
-import { useEffect, useState } from 'react';
+//import { useEffect, useState } from 'react';
+/* import { accountService } from '../utils/accountService';
+import { userService } from '../utils/getData';
+ */
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import logo from '../assets/argentBankLogo.png';
-import { accountService } from '../utils/accountService';
-import { userService } from '../utils/getData';
 
 // console.log(accountService.isLogged());
 
 function Header() {
-  let navigate = useNavigate();
-  const [firstName, setFirstName] = useState();
-  useEffect(() => {
-    userService
-      .getUsers()
-      .then((res) => {
-        setFirstName(res.data.body.firstName);
-      })
-      .catch((err) => console.log('err', err));
-  }, []);
+  const loc = useSelector((state) => state.user.isLogged);
+  // const [firstName, setFirstName] = useState();
+  const dispatch = useDispatch;
+  // let navigate = useNavigate();
+  const info = useSelector((state) => state.user.firstName);
+  console.log('info', info);
+  console.log('loc', loc);
   const logout = () => {
-    accountService.logout();
-    navigate('/');
+    console.log('out');
   };
-  if (accountService.isLogged() === true) {
+  if (loc === true) {
     return (
       <nav className="main-nav">
         <Link className="main-nav-logo" to={'/'}>
@@ -34,7 +32,7 @@ function Header() {
         </Link>
         <div>
           <Link className="main-nav-item" to={'/Users'}>
-            <i className="fa fa-user-circle"></i> {firstName}
+            <i className="fa fa-user-circle"></i>
           </Link>
           <button className="button-logout" onClick={logout}>
             <i className="fa fa-sign-out"></i>

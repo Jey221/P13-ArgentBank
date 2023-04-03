@@ -1,38 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { accountService } from '../../utils/accountService';
-import { useSelector, useDispatch } from 'react-redux';
-import { fetchUser } from '../../redux/userSlice';
+import { loginUser } from '../../redux/authSlice';
 
 function Login() {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchUser());
-  }, []);
-
-  const user = useSelector((state) => state.user);
-  console.log(user);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   let navigate = useNavigate();
-  const [inputs, setInputs] = useState({
-    email: '',
-    password: '',
-  });
 
-  const onChange = (e) => {
-    setInputs({ ...inputs, [e.target.name]: e.target.value });
-  };
+  const dispatch = useDispatch();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    accountService
-      .login(inputs)
-      .then((res) => {
-        console.log('res', res);
-        console.log('token', res.data.body.token);
-        accountService.saveToken(res.data.body.token);
-        navigate('/Users');
-      })
-      .catch((error) => console.log('error', error));
+  const loc = useSelector((state) => state.user.isLogged);
+  console.log(loc);
+
+  const handleLogin = () => {
+    console.log(email, password);
+    dispatch(loginUser({ email, password }));
+    navigate('/Users');
   };
 
   return (
@@ -40,12 +24,12 @@ function Login() {
       <section className="sign-in-content">
         <i className="fa fa-user-circle sign-in-icon"></i>
         <h1>Sign In</h1>
-        <form className="login-form" onSubmit={handleSubmit}>
+        <form className="login-form">
           <div className="input-wrapper">
             <label htmlFor="email">email</label>
             <input
-              value={inputs.email}
-              onChange={onChange}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               type="email"
               placeholder="youremail@mail.com"
               name="email"
@@ -55,8 +39,8 @@ function Login() {
           <div className="input-wrapper">
             <label htmlFor="password">Password</label>
             <input
-              value={inputs.password}
-              onChange={onChange}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               type="password"
               name="password"
               placeholder="**************"
@@ -67,7 +51,11 @@ function Login() {
             <input type="checkbox" id="remember-me" />
             <label htmlFor="remember-me">Remember me</label>
           </div>
-          <button type="submit" className="sign-in-button">
+          <button
+            type="submit"
+            className="sign-in-button"
+            onClick={handleLogin}
+          >
             Sign In
           </button>
         </form>
