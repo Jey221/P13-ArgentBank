@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 // import { userService } from '../../utils/getData';
 import { useNavigate } from 'react-router-dom';
+import { dataService } from '../../utils/getData';
 
 const EditZone = () => {
   let navigate = useNavigate();
@@ -9,21 +10,18 @@ const EditZone = () => {
     lastName: '',
   });
 
-  /*   useEffect(() => {
-    userService
-      .getUsers()
-      .then((res) => {
-        setUser(res.data.body);
-      })
-      .catch((err) => console.log('err', err));
-  }, []);
- */
   const onChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
   const handleSubmit = (e) => {
     e.preventDefault();
     const updateUser = { ...user, [e.target.name]: e.target.value };
+
+    dataService.editUsers(updateUser).then((res) => {
+      navigate('/Users');
+      return res;
+    });
+
     /*     userService
       .editUsers(updateUser)
       .then((res) => {

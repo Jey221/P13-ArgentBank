@@ -3,7 +3,6 @@ import { dataService } from '../../utils/getData';
 import { useDispatch } from 'react-redux';
 import { loginSuccess } from '../../redux/reducers/loginReducer';
 import { useNavigate } from 'react-router-dom';
-// import { accountService } from '../../utils/accountService';
 
 function Login() {
   let navigate = useNavigate();
