@@ -1,5 +1,4 @@
 import { useState } from 'react';
-// import { userService } from '../../utils/getData';
 import { useNavigate } from 'react-router-dom';
 import { dataService } from '../../utils/getData';
 
@@ -21,14 +20,6 @@ const EditZone = () => {
       navigate('/Users');
       return res;
     });
-
-    /*     userService
-      .editUsers(updateUser)
-      .then((res) => {
-        navigate('/Users');
-      })
-      .catch((err) => console.log('err', err));
- */
   };
   const handleReset = (e) => {
     e.preventDefault();

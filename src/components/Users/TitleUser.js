@@ -16,7 +16,6 @@ function TitleUser() {
     dataService
       .getUsers()
       .then((res) => {
-        console.log(res);
         dispatch(profilSuccess(res.data.body));
       })
       .catch((err) => console.log('err', err));

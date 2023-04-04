@@ -24,16 +24,6 @@ function Login() {
       localStorage.setItem('token', res.data.body.token);
       navigate('/Users');
     });
-    /*     accountService
-      .login(inputs)
-      .then((res) => {
-        console.log('res', res);
-        console.log('token', res.data.body.token);
-        accountService.saveToken(res.data.body.token);
-        navigate('/Users');
-      })
-      .catch((error) => console.log('error', error));
- */
   };
 
   return (
