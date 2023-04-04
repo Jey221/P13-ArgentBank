@@ -1,6 +1,8 @@
-import { useEffect, useState } from 'react';
-import { userService } from '../../utils/getData';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { dataService } from '../../utils/getData';
+import { profilSuccess } from '../../redux/reducers/profilReducer';
 
 function TitleUser() {
   let navigate = useNavigate();
@@ -8,17 +10,21 @@ function TitleUser() {
     navigate('/Users/edit-mode');
   };
 
-  const [firstName, setFirstName] = useState();
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    userService
+    dataService
       .getUsers()
       .then((res) => {
-        setFirstName(res.data.body.firstName);
+        console.log(res);
+        dispatch(profilSuccess(res.data.body));
       })
       .catch((err) => console.log('err', err));
-  }, []);
+  }, [dispatch]);
 
+  const firstName = useSelector((state) => state.profil.userInfos.firstName);
+
+  console.log('firstName', firstName);
   return (
     <div className="headerUser">
       <h1>

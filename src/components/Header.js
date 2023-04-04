@@ -2,14 +2,11 @@ import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import logo from '../assets/argentBankLogo.png';
 import { accountService } from '../utils/accountService';
-import { userService } from '../utils/getData';
-
-// console.log(accountService.isLogged());
 
 function Header() {
   let navigate = useNavigate();
   const [firstName, setFirstName] = useState();
-  useEffect(() => {
+  /*   useEffect(() => {
     userService
       .getUsers()
       .then((res) => {
@@ -17,7 +14,7 @@ function Header() {
       })
       .catch((err) => console.log('err', err));
   }, []);
-  const logout = () => {
+ */ const logout = () => {
     accountService.logout();
     navigate('/');
   };
