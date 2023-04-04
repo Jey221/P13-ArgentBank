@@ -1,24 +1,27 @@
-import { useEffect, useState } from 'react';
+// import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import logo from '../assets/argentBankLogo.png';
-import { accountService } from '../utils/accountService';
+// import { accountService } from '../utils/accountService';
+import { useSelector, useDispatch } from 'react-redux';
+import { logoutAction } from '../redux/reducers/loginReducer';
+import { profilOut } from '../redux/reducers/profilReducer';
 
 function Header() {
   let navigate = useNavigate();
-  const [firstName, setFirstName] = useState();
-  /*   useEffect(() => {
-    userService
-      .getUsers()
-      .then((res) => {
-        setFirstName(res.data.body.firstName);
-      })
-      .catch((err) => console.log('err', err));
-  }, []);
- */ const logout = () => {
-    accountService.logout();
+
+  const dispatch = useDispatch();
+
+  const firstName = useSelector((state) => state.profil.userInfos.firstName);
+
+  const islogged = useSelector((state) => state.profil.isLogged);
+
+  const logout = () => {
+    localStorage.removeItem('token');
+    dispatch(logoutAction());
+    dispatch(profilOut());
     navigate('/');
   };
-  if (accountService.isLogged() === true) {
+  if (islogged === true) {
     return (
       <nav className="main-nav">
         <Link className="main-nav-logo" to={'/'}>

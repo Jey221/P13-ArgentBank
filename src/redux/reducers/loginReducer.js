@@ -22,11 +22,13 @@ const loginSlice = createSlice({
       state.isLogged = false;
       state.error = actions.payload;
     },
-    logout: (state) => {
+    logoutAction: (state) => {
+      state.isLogged = false;
       state.authenticated = false;
     },
   },
 });
 
-export const { loginPending, loginSuccess, loginFailure } = loginSlice.actions;
+export const { loginPending, loginSuccess, loginFailure, logoutAction } =
+  loginSlice.actions;
 export default loginSlice.reducer;

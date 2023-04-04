@@ -24,9 +24,14 @@ const profilSlice = createSlice({
       state.isLogged = false;
       state.error = actions.payload;
     },
+    profilOut: (state) => {
+      state.isLogged = false;
+      state.authenticated = false;
+      state.userInfos = '';
+    },
   },
 });
 
-export const { profilPending, profilSuccess, profilFailure } =
+export const { profilPending, profilSuccess, profilFailure, profilOut } =
   profilSlice.actions;
 export default profilSlice.reducer;

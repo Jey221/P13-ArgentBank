@@ -23,8 +23,6 @@ function TitleUser() {
   }, [dispatch]);
 
   const firstName = useSelector((state) => state.profil.userInfos.firstName);
-
-  console.log('firstName', firstName);
   return (
     <div className="headerUser">
       <h1>
