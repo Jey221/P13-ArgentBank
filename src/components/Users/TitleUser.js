@@ -1,23 +1,16 @@
 import { useEffect, useState } from 'react';
-import { userService } from '../../utils/getData';
+// import { userService } from '../../utils/getData';
 import { useNavigate } from 'react-router-dom';
+import { getUsers } from '../../redux/actions/userAction';
+import { useDispatch, useSelector } from 'react-redux';
 
 function TitleUser() {
+  const [firstName, setFirstName] = useState();
   let navigate = useNavigate();
   const editUsers = () => {
     navigate('/Users/edit-mode');
   };
 
-  const [firstName, setFirstName] = useState();
-
-  useEffect(() => {
-    userService
-      .getUsers()
-      .then((res) => {
-        setFirstName(res.data.body.firstName);
-      })
-      .catch((err) => console.log('err', err));
-  }, []);
   return (
     <div className="headerUser">
       <h1>

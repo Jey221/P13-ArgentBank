@@ -13,17 +13,17 @@ let isLogged = () => {
   return !!token;
 };
 
-let saveToken = (token) => {
+/* let saveToken = (token) => {
   localStorage.setItem('token', token);
 };
 
 let getToken = () => {
   return localStorage.getItem('token');
 };
-export const accountService = {
+ */ export const accountService = {
   login,
   logout,
   isLogged,
-  saveToken,
-  getToken,
+  //saveToken,
+  //getToken,
 };

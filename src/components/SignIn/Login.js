@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 // import { accountService } from '../../utils/accountService';
 import { getLogin } from '../../redux/actions/loginAction';
 
 function Login() {
-  // let navigate = useNavigate();
+  let navigate = useNavigate();
   const dispatch = useDispatch();
   const [inputs, setInputs] = useState({
     email: '',
@@ -15,14 +15,16 @@ function Login() {
   const onChange = (e) => {
     setInputs({ ...inputs, [e.target.name]: e.target.value });
   };
-  const tok = useSelector((state) => state.loginReducer[1]);
 
-  console.log('tok', tok);
+  console.log(
+    'token',
+    useSelector((state) => state.loginReducer[1])
+  );
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('get login');
     console.log(inputs);
     dispatch(getLogin(inputs));
+    navigate('/Users');
   };
 
   return (
