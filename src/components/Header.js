@@ -4,6 +4,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import { logoutAction } from '../redux/reducers/loginReducer';
 import { profilOut } from '../redux/reducers/profilReducer';
 
+/**
+ * This is a React component that renders a navigation bar with different options depending on whether
+ * the user is logged in or not.
+ * @returns The Header component is being returned, which displays a navigation bar with a logo and
+ * links/buttons depending on whether the user is logged in or not. If the user is logged in, it
+ * displays the user's first name and a "Sign Out" button. If the user is not logged in, it displays a
+ * "Sign In" button.
+ */
 function Header() {
   let navigate = useNavigate();
 
@@ -63,31 +71,3 @@ function Header() {
 }
 
 export default Header;
-
-/* function Header() {
-  return (
-    <nav className="main-nav">
-      <Link className="main-nav-logo" to={'/'}>
-        <img
-          className="main-nav-logo-image"
-          src={logo}
-          alt="Argent Bank Logo"
-        />
-        <h1 className="sr-only">Argent Bank</h1>
-      </Link>
-      <div>
-        <Link className="main-nav-item" to={'/Users'}>
-          {accountService.isLogged() === true ? (
-            <i className="fa fa-user-circle"> lol</i>
-          ) : (
-            ''
-          )}
-        </Link>
-        <Link className="main-nav-item" to={'/SignIn'}>
-          <i className="fa fa-user-circle"></i> Sign In
-        </Link>
-      </div>
-    </nav>
-  );
-}
- */

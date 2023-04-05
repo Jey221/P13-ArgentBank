@@ -2,6 +2,13 @@ import iconChat from '../../assets/icon-chat.png';
 import iconMoney from '../../assets/icon-money.png';
 import iconSecurity from '../../assets/icon-security.png';
 
+/**
+ * The function returns a set of features with icons, titles, and descriptions for a financial service.
+ * @returns A React functional component called "Feature" is being returned. It renders a div with
+ * class name "features" and three child divs with class name "feature-item". Each child div contains
+ * an image, a heading, and a paragraph. The images are sourced from three different icons, and the
+ * headings and paragraphs contain text related to the features of the product being advertised.
+ */
 function Feature() {
   return (
     <div className="features">

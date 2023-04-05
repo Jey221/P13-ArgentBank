@@ -2,6 +2,11 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { dataService } from '../../utils/getData';
 
+/**
+ * The EditZone function is a form component that allows users to edit their first and last name and
+ * submit or cancel the changes.
+ * @returns The component `EditZone` is being returned, which contains a form for editing user data.
+ */
 const EditZone = () => {
   let navigate = useNavigate();
   const [user, setUser] = useState({

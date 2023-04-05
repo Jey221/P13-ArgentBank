@@ -4,6 +4,11 @@ import { useDispatch } from 'react-redux';
 import { loginSuccess } from '../../redux/reducers/loginReducer';
 import { useNavigate } from 'react-router-dom';
 
+/**
+ * This is a login form component in JavaScript that takes user input for email and password,
+ * dispatches a login success action, and navigates to a user page.
+ * @returns A React component for a login form.
+ */
 function Login() {
   let navigate = useNavigate();
   const [inputs, setInputs] = useState({
@@ -17,6 +22,13 @@ function Login() {
 
   const dispatch = useDispatch();
 
+  /**
+   * This function handles form submission for a login form, dispatches a login success action, saves a
+   * token to local storage, and navigates to the Users page.
+   * @param e - The `e` parameter is an event object that is passed to the `handleSubmit` function when
+   * it is called. It is used to prevent the default behavior of the form submission, which is to reload
+   * the page.
+   */
   const handleSubmit = (e) => {
     e.preventDefault();
     dataService.login(inputs).then((res) => {

@@ -4,6 +4,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { dataService } from '../../utils/getData';
 import { profilSuccess } from '../../redux/reducers/profilReducer';
 
+/**
+ * This function displays the user's first name and allows them to edit it by clicking a button.
+ * @returns A React functional component that displays a header with the user's first name and an "Edit
+ * Name" button. When the button is clicked, it navigates to the "/Users/edit-mode" route. The
+ * component also fetches user data from a data service using Redux and displays the user's first name
+ * using the useSelector hook.
+ */
 function TitleUser() {
   let navigate = useNavigate();
   const editUsers = () => {
