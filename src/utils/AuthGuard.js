@@ -1,9 +1,13 @@
 import { Navigate } from 'react-router-dom';
 import React from 'react';
-import { accountService } from './accountService';
+
+let isLogged = () => {
+  let token = localStorage.getItem('token');
+  return !!token;
+};
 
 const AuthGuard = ({ children }) => {
-  if (!accountService.isLogged()) {
+  if (!isLogged()) {
     return <Navigate to="/SignIn" />;
   }
   return children;

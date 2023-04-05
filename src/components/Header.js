@@ -1,7 +1,5 @@
-// import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import logo from '../assets/argentBankLogo.png';
-// import { accountService } from '../utils/accountService';
 import { useSelector, useDispatch } from 'react-redux';
 import { logoutAction } from '../redux/reducers/loginReducer';
 import { profilOut } from '../redux/reducers/profilReducer';
