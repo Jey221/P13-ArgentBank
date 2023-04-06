@@ -1,0 +1,123 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: Transactions API
+  description: API for managing transactions in the application
+host: api.example.com
+basePath: /v1
+schemes:
+  - https
+consumes:
+  - application/json
+produces:
+  - application/json
+
+paths:
+  /transactions:
+    get:
+      summary: Get all transactions for the current month
+      description: Returns a list of all transactions for the current month for the authenticated user
+      parameters:
+        - name: month
+          in: query
+          description: Month to get transactions for in the format YYYY-MM
+          required: false
+          type: string
+          format: date
+      responses:
+        200:
+          description: List of transactions for the current month
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Transaction'
+        401:
+          $ref: '#/responses/Unauthorized'
+        500:
+          $ref: '#/responses/ServerError'
+
+    post:
+      summary: Add a new transaction
+      description: Adds a new transaction for the authenticated user
+      parameters:
+        - name: transaction
+          in: body
+          description: Transaction object to add
+          required: true
+          schema:
+            $ref: '#/definitions/TransactionInput'
+      responses:
+        201:
+          description: New transaction added successfully
+          schema:
+            $ref: '#/definitions/Transaction'
+        400:
+          $ref: '#/responses/BadRequest'
+        401:
+          $ref: '#/responses/Unauthorized'
+        500:
+          $ref: '#/responses/ServerError'
+
+  /transactions/{id}:
+    get:
+      summary: Get details of a transaction
+      description: Returns the details of a transaction for the authenticated user
+      parameters:
+        - name: id
+          in: path
+          description: ID of the transaction to get
+          required: true
+          type: string
+      responses:
+        200:
+          description: Details of the requested transaction
+          schema:
+            $ref: '#/definitions/Transaction'
+        401:
+          $ref: '#/responses/Unauthorized'
+        404:
+          $ref: '#/responses/NotFound'
+        500:
+          $ref: '#/responses/ServerError'
+
+    put:
+      summary: Update a transaction
+      description: Updates a transaction for the authenticated user
+      parameters:
+        - name: id
+          in: path
+          description: ID of the transaction to update
+          required: true
+          type: string
+        - name: transaction
+          in: body
+          description: Transaction object to update
+          required: true
+          schema:
+            $ref: '#/definitions/TransactionInput'
+      responses:
+        200:
+          description: Transaction updated successfully
+          schema:
+            $ref: '#/definitions/Transaction'
+        400:
+          $ref: '#/responses/BadRequest'
+        401:
+          $ref: '#/responses/Unauthorized'
+        404:
+          $ref: '#/responses/NotFound'
+        500:
+          $ref: '#/responses/ServerError'
+
+    delete:
+      summary: Delete a transaction
+      description: Deletes a transaction for the authenticated user
+      parameters:
+        - name: id
+          in: path
+          description: ID of the transaction to delete
+          required: true
+          type: string
+      responses:
+        204:
+          description: Transaction deleted
