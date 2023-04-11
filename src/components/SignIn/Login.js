@@ -35,6 +35,7 @@ function Login() {
       dispatch(loginSuccess(inputs));
       localStorage.setItem('token', res.data.body.token);
       navigate('/Users');
+      navigate(0);
     });
   };
 

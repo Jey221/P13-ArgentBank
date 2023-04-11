@@ -9,7 +9,7 @@ let isLogged = () => {
   return !!log;
 };
 
-const token = localStorage.getItem('token');
+let token = localStorage.getItem('token');
 
 /**
  * Intercepteur pour le token

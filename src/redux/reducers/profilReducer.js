@@ -40,6 +40,7 @@ const profilSlice = createSlice({
       state.isLogged = false;
       state.authenticated = false;
       state.userInfos = '';
+      localStorage.removeItem('token');
     },
   },
 });

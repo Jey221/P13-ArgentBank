@@ -41,6 +41,7 @@ const EditZone = () => {
             type="text"
             placeholder="firstname"
             name="firstName"
+            required
           ></input>
           <input
             value={user.lastName}
@@ -48,6 +49,7 @@ const EditZone = () => {
             type="text"
             placeholder="lastname"
             name="lastName"
+            required
           ></input>
         </div>
         <div className="editButton">
