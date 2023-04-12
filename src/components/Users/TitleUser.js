@@ -29,14 +29,14 @@ function TitleUser() {
   }, [dispatch]);
 
   const selectorName = (state) => state.profil.userInfos.firstName;
-  const name = useSelector(selectorName);
-  console.log(name);
+  const firstName = useSelector(selectorName);
+
   return (
     <div className="headerUser">
       <h1>
         Welcome back
         <br />
-        {name}
+        {firstName}
       </h1>
       <button className="edit-button" onClick={editUsers}>
         Edit Name

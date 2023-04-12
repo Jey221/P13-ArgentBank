@@ -119,6 +119,11 @@ paths:
       summary: Get all transactions for the current month
       description: Returns a list of all transactions for the current month for the authenticated user
       parameters:
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT token
+          type: string
+          required: true
         - name: month
           in: query
           description: Month to get transactions for in the format YYYY-MM
@@ -140,6 +145,11 @@ paths:
       summary: Add a new transaction
       description: Adds a new transaction for the authenticated user
       parameters:
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT token
+          type: string
+          required: true
         - name: transaction
           in: body
           description: Transaction object to add
@@ -164,6 +174,11 @@ paths:
       summary: Get details of a transaction
       description: Returns the details of a transaction for the authenticated user
       parameters:
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT token
+          type: string
+          required: true
         - name: id
           in: path
           description: ID of the transaction to get
@@ -186,6 +201,11 @@ paths:
       summary: Update a transaction
       description: Updates a transaction for the authenticated user
       parameters:
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT token
+          type: string
+          required: true
         - name: id
           in: path
           description: ID of the transaction to update
@@ -216,6 +236,11 @@ paths:
       summary: Delete a transaction
       description: Deletes a transaction for the authenticated user
       parameters:
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT token
+          type: string
+          required: true
         - name: id
           in: path
           description: ID of the transaction to delete
@@ -288,7 +313,7 @@ definitions:
       amount:
         type: string
       balance:
-        type: string
+        type: string 
   TransactionInput:
     type: object
     properties:

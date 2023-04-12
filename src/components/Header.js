@@ -26,6 +26,7 @@ function Header() {
     dispatch(logoutAction());
     dispatch(profilOut());
     navigate('/');
+    navigate(0);
   };
   if (islogged === true) {
     return (
